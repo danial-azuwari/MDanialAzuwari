@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sistem Keuangan Sekolah — M. Danial Azuwari</title>
+<meta name="description" content="Case study: Sistem Keuangan Sekolah — a Google Apps Script–automated school finance & payroll system by Muhammad Danial Azuwari.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<div class="grain"></div>
+
+<header class="site-header">
+  <div class="wrap header-row">
+    <a href="../index.html" class="brand">M. Danial<span>.</span>Azuwari</a>
+    <nav class="nav">
+      <a class="detail-back" href="../index.html#work">← Back to Portfolio</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="detail-header">
+    <div class="wrap">
+      <p class="detail-tag mono">SCHOOL FINANCE &amp; PAYROLL AUTOMATION</p>
+      <h1 class="detail-title">Sistem Keuangan Sekolah</h1>
+      <p class="detail-summary">
+        An Apps Script–automated finance system for a school with two units (MA &amp; MTS) — logging
+        every transaction, tracking two separate funding sources, and checking teacher payroll
+        automatically every day.
+      </p>
+    </div>
+  </section>
+
+  <section class="detail-section">
+    <div class="wrap">
+      <h2>The Problem</h2>
+      <p>The school runs two units — MA and MTS — each receiving two separate funding sources
+        (Dana BOS and SPP), which had to be recorded, categorized, and reported separately.
+        On top of that, teacher pay is calculated per-hour and split across both units,
+        so getting an accurate daily balance and correct payroll meant a lot of manual
+        cross-checking.</p>
+    </div>
+  </section>
+
+  <section class="detail-section">
+    <div class="wrap">
+      <h2>What I Built / My Role</h2>
+      <p>A Google Form for transaction entry — separating income (by fund category: BOS or SPP)
+        from itemized expenses — feeding into a protected Google Sheets backend. Master data sheets
+        (<em>M_Unit</em>, <em>M_Guru</em>) hold the two school units and each teacher's subjects,
+        hourly rate, and hours taught per unit, which the system uses to calculate salary automatically.</p>
+    </div>
+  </section>
+
+  <section class="detail-section">
+    <div class="wrap">
+      <h2>How It Works / Workflow</h2>
+      <p>Every form submission runs an Apps Script trigger (<code>onFormSubmitTransaksi</code>) that
+        auto-generates a unique transaction ID (e.g. <code>TRX-20260820-0001</code>) and logs it into
+        the transaction database. The core sheets (<em>DB_Transaksi, DB_Gaji, DB_Dana, M_Kategori,
+        M_Set</em>) are locked with sheet protection so daily data entry can't accidentally break the
+        formulas underneath.</p>
+      <p>A daily time-driven trigger runs at 01:00 to automatically check teacher payroll
+        (<code>jalankanCekGajiHarian</code>) and refresh the reconciliation report
+        (<code>updateLaporan_</code>), broken down by period, unit, and fund type. A live dashboard
+        sheet (<em>Dash</em>) then shows the current balance and income/expense summary at a glance —
+        the same numbers shown on the card back on the portfolio page.</p>
+    </div>
+  </section>
+
+  <section class="detail-section">
+    <div class="wrap">
+      <h2>Tools</h2>
+      <ul class="detail-tools">
+        <li>Google Sheets</li>
+        <li>Google Forms</li>
+        <li>Google Apps Script</li>
+        <li>Time-driven Triggers</li>
+        <li>Sheet Protection / Permissions</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="detail-section">
+    <div class="wrap">
+      <h2>Result / Outcome</h2>
+      <p>Live and in active use — transactions have been logging automatically with auto-generated
+        IDs since August 2026, covering both units and both fund sources without manual sorting.
+        Teacher payroll is checked automatically every day instead of calculated by hand at the end
+        of the month.</p>
+    </div>
+  </section>
+
+  <section class="detail-section">
+    <div class="wrap">
+      <h2>Project Documentation</h2>
+      <p>This system runs on a live spreadsheet rather than a public interface, so there isn't a
+        conventional screenshot gallery yet — the workflow above is drawn directly from the system's
+        own sheet structure and Apps Script execution logs. A visual walkthrough will be added here
+        once a clean demo copy (with real school data removed) is ready to share.</p>
+    </div>
+  </section>
+
+  <section class="detail-footer-nav">
+    <div class="wrap">
+      <a class="detail-back" href="../index.html#work">← Back to Portfolio</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <span>© 2026 Muhammad Danial Azuwari</span>
+    <span class="mono">Built with Google Workspace, discipline, and a lot of spreadsheets.</span>
+  </div>
+</footer>
+
+</body>
+</html>
